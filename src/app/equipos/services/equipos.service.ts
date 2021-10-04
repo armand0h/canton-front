@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Equipo } from '../interfaces/equipos.interface';
 import { Usuario } from '../interfaces/usuarios.interface';
+import { Venta } from '../interfaces/ventas.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +35,12 @@ export class EquiposService {
     // Data de los usuarios
     return this.http.get<Usuario[]>( url );
   }
+
+  // Detalle de las ventas TODO: hacer servicio independiente
+  getVentas(  equipoId:string, usuarioId:string): Observable<Venta[]> {
+    const url: string = `${ this.baseUrl }/sales/team/${ equipoId }/user/${ usuarioId }`;
+    // Data de los usuarios
+    return this.http.get<Venta[]>( url );
+  }
+
 }

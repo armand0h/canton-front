@@ -5,6 +5,8 @@ import { switchMap, tap } from 'rxjs/operators';
 import { EquiposService } from '../../services/equipos.service';
 import { Equipo } from '../../interfaces/equipos.interface';
 import { Usuario } from '../../interfaces/usuarios.interface';
+import { Venta } from '../../interfaces/ventas.interface';
+
 
 @Component({
   selector: 'app-selector-page',
@@ -22,6 +24,7 @@ export class SelectorPageComponent implements OnInit {
   // Data para selectores
   equipos: Equipo[] = [];
   usuarios: Usuario[] = [];
+  ventas:   Venta[] = []
   
 
   constructor( private fb: FormBuilder, 
@@ -32,7 +35,7 @@ export class SelectorPageComponent implements OnInit {
     // Listado de equipos
     this.EquiposService.getEquipos()
       .subscribe( teams => {
-        console.log(teams);
+        //console.log(teams);
         this.equipos = teams;
       });
 
@@ -52,8 +55,19 @@ export class SelectorPageComponent implements OnInit {
 
 
 
-  guardar() {
-    console.log(this.miFormulario.value);
+  buscar() {
+    const equipoId = this.miFormulario.controls['equipo'].value;
+    const usuarioId   = this.miFormulario.controls['usuario'].value
+
+    // Busca información para llenar las ventas
+    this.EquiposService.getVentas( equipoId, usuarioId )
+      .subscribe( sales => {
+        console.log(sales);
+        this.ventas = sales;
+      });
+
+    //console.log("busca");
+    //console.log(this.miFormulario.value);
   }
 
 }

@@ -1,7 +1,7 @@
 <h1 class="mt-5">Seleccionar opciones</h1>
 <hr>
 
-<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+<form [formGroup]="miFormulario" (ngSubmit)="buscar()">
     <!-- Equipos -->
     <div class="row mb-3">
         <div class="col">
@@ -39,6 +39,8 @@
         </div>
     </div>
 </form>
+
+<pre>Ventas {{ ventas | json }}</pre>
 
 <h3>Data form</h3>
 <pre> valid: {{ miFormulario.valid  }}</pre>
