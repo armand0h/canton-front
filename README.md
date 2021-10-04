@@ -15,5 +15,5 @@ Test Front-end para la api canton-api
 
 ## Iniciar
     dentro de canton-front
-    ng-serve
+    ng serve
     visitar: http://localhost:4200/
