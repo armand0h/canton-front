@@ -40,8 +40,39 @@
     </div>
 </form>
 
-<pre>Ventas {{ ventas | json }}</pre>
+<h1 class="mt-5">Ventas</h1>
+<hr>
+<div *ngIf="ventas.length > 0">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id venta</th>
+            <th scope="col">Fecha venta</th>
+            <th scope="col">Nombre cliente</th>
+            <th scope="col">Monto venta</th>
+            <th scope="col">Nombre equipo</th>
+            <th scope="col">Nombre usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventas">
+            <th scope="row">{{venta.id_venta}}</th>
+            <td>{{venta.fecha_venta_dmY}}</td>
+            <td>{{venta.nombre_cliente}}</td>
+            <td>{{venta.monto_venta}}</td>
+            <td>{{venta.nombre_equipo}}</td>
+            <td>{{venta.nombre_usuario}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+  <!-- <h1 *ngIf="ventas.length == 0">Sin resultados de busqueda</h1> -->
+
+
+<!-- <pre>Ventas {{ ventas | json }}</pre>
 
 <h3>Data form</h3>
 <pre> valid: {{ miFormulario.valid  }}</pre>
-<pre> {{ miFormulario.value | json  }}</pre>
+<pre> {{ miFormulario.value | json  }}</pre> -->
