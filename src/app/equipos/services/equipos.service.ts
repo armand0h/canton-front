@@ -11,7 +11,7 @@ import { Venta } from '../interfaces/ventas.interface';
 export class EquiposService {
 
   // URL para consulta de usuarios por equipo
-  private baseUrl: string = 'http://localhost:8080';
+  private baseUrl: string = 'http://localhost:8080';    // <- puerto
 
   // TODO cambiar por el servicio http
   private _equipos: string[] = ["1", "2"];
