@@ -10,7 +10,7 @@ import { Usuario } from '../interfaces/usuarios.interface';
 export class EquiposService {
 
   // URL para consulta de usuarios por equipo
-  private baseUrl: string = 'http://localhost:8080/users';
+  private baseUrl: string = 'http://localhost:8080';
 
   // TODO cambiar por el servicio http
   private _equipos: string[] = ["1", "2"];
@@ -21,10 +21,17 @@ export class EquiposService {
 
   constructor( private http:HttpClient ) { }
 
+  // Traerl istado de equipos
+  getEquipos( ): Observable<Equipo[]> {
+    const url: string = `${ this.baseUrl }/teams`;
+    // Data de los equipos
+    return this.http.get<Equipo[]>(url);
+  }
+
   // Traer usuarios por equipo
   getUsuariosPorEquipo( equipo:string ): Observable<Usuario[]> {
-    const url: string = `${ this.baseUrl }/team/${ equipo }`;
-    // Data de los equipos
+    const url: string = `${ this.baseUrl }/users/team/${ equipo }`;
+    // Data de los usuarios
     return this.http.get<Usuario[]>( url );
   }
 }

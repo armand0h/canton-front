@@ -18,14 +18,21 @@ export class SelectorPageComponent implements OnInit {
   })
 
   // Data para selectores
-  equipos: string[] = [];
+  equipos: Equipo[] = [];
   usuarios: Usuario[] = [];
+  
 
   constructor( private fb: FormBuilder, 
               private EquiposService: EquiposService ) { }
 
   ngOnInit(): void {
-    this.equipos = this.EquiposService.equipos;
+
+    // Listado de equipos
+    this.EquiposService.getEquipos()
+      .subscribe( teams => {
+        console.log(teams);
+        this.equipos = teams;
+      });
 
     // Cuando cambie el equipo
     this.miFormulario.get('equipo')?.valueChanges

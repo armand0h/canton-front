@@ -8,9 +8,9 @@
             <label class="form-label">Equipos:</label>
             <select class="form-control"
                 formControlName="equipo">
-                <option value="0">-- Seleccione --</option>
+                <option value="0">-- Todos --</option>
                 <option *ngFor="let equipo of equipos"
-                    [value]="equipo">{{ equipo }}</option>
+                    [value]="equipo.id">{{ equipo.name }}</option>
                 
             </select>
         </div>
@@ -22,7 +22,7 @@
             <label class="form-label">Usuarios:</label>
             <select class="form-control"
                 formControlName="usuario">
-                <option value="0">-- Seleccione --</option>
+                <option value="0">-- Todos --</option>
                 <option *ngFor="let usuario of usuarios"
                     [value]="usuario.id">{{ usuario.name }}</option>
                 
