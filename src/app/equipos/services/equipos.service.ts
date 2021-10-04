@@ -29,8 +29,19 @@ export class EquiposService {
     return this.http.get<Equipo[]>(url);
   }
 
+  // Traer listado de usuarios
+  getUsuarios( ): Observable<Usuario[]> {
+    const url: string = `${ this.baseUrl }/users`;
+    // Data de los equipos
+    return this.http.get<Usuario[]>(url);
+  }
+
   // Traer usuarios por equipo
   getUsuariosPorEquipo( equipo:string ): Observable<Usuario[]> {
+    // Al regresar equipos a '--Todos--' regresamos todos los usuarios
+    if (equipo == '0') {
+      return this.getUsuarios();
+    }
     const url: string = `${ this.baseUrl }/users/team/${ equipo }`;
     // Data de los usuarios
     return this.http.get<Usuario[]>( url );

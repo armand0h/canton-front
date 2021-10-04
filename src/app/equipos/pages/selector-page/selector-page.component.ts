@@ -39,6 +39,13 @@ export class SelectorPageComponent implements OnInit {
         this.equipos = teams;
       });
 
+    // Listado de usuarios completo al iniciar la app
+    this.EquiposService.getUsuarios()
+      .subscribe( users => {
+        //console.log(users);
+        this.usuarios = users;
+      });
+
     // Cuando cambie el equipo cambian los usuarios
     this.miFormulario.get('equipo')?.valueChanges
       .pipe(
@@ -62,12 +69,9 @@ export class SelectorPageComponent implements OnInit {
     // Busca información para llenar las ventas
     this.EquiposService.getVentas( equipoId, usuarioId )
       .subscribe( sales => {
-        console.log(sales);
+        //console.log(sales);
         this.ventas = sales;
       });
-
-    //console.log("busca");
-    //console.log(this.miFormulario.value);
   }
 
 }
